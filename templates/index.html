@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrackMotion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">TrackMotion</h1>
+    <p class="subtitle">Upload a video, drag to select ROI on the first frame, then generate your heatmap!</p>
+
+    <!-- Upload Form -->
+    <div class="upload-box">
+      <form id="uploadForm">
+        <input type="file" id="videoInput" name="video" accept="video/*" required />
+        <label for="videoInput" class="upload-label">
+          <i class="fas fa-cloud-upload-alt"></i> Choose a Video
+        </label>
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+      <div id="fileName" class="file-name hidden"></div>
+    </div>
+
+    <!-- Video Preview + ROI Canvas -->
+    <div id="previewBox" class="hidden">
+      <h2>Video Preview</h2>
+      <div class="video-container">
+        <video id="videoPreview" muted controls></video>
+        <canvas id="canvasOverlay"></canvas>
+      </div>
+      <!-- Background selection for heatmap -->
+      <div class="bg-options">
+        <label><input type="radio" name="bgOption" value="black" checked> Black Background</label>
+        <label><input type="radio" name="bgOption" value="white"> White Background</label>
+      </div>
+      <button id="processBtn" class="process-btn hidden">Generate Heatmap</button>
+    </div>
+
+    <!-- Animated Loading Indicator -->
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p>Processing... Please wait.</p>
+    </div>
+
+    <!-- Result -->
+    <div id="result" class="hidden">
+      <h2> Heatmap Result</h2>
+      <img id="heatmapImage" src="" alt="Generated Heatmap" />
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
