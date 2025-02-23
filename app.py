@@ -5,7 +5,7 @@ import os
 import uuid
 
 app = Flask(__name__)
-app.secret_key = 'replace_with_any_random_secret_key'
+app.secret_key = '2077'
 
 UPLOAD_FOLDER = 'uploads'
 RESULT_FOLDER = 'results'
